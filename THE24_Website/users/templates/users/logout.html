@@ -6,9 +6,4 @@
             <a href="{% url 'login' %}">Log In Again</a>
         </small>
     </div>
-    <!-- Logout Form -->
-    <form action="{% url 'logout' %}" method="POST" class="mt-3">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary">Logout</button>
-    </form>
 {% endblock content %}

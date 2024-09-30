@@ -4,6 +4,7 @@ services:
   web:
     build: .
     command: gunicorn --workers 3 --bind 0.0.0.0:8000 THE24_Website.wsgi:application
+    entrypoint: ["/app/entrypoint.sh"]
     volumes:
       - .:/app  # Good for development
     ports:

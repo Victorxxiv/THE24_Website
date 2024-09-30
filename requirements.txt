@@ -2,6 +2,7 @@
 Django==4.2.5  # Main framework for the web app
 Flask==2.3.2  # Flask used for microservices or lightweight routing
 SQLAlchemy==2.0.18  # Core ORM library (used in Flask microservices)
+gunicorn==20.1.0  # WSGI HTTP Server for running Django/Flask apps in production
 
 # Form rendering and Bootstrap styling
 django-crispy-forms==2.0

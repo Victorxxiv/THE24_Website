@@ -1,0 +1,58 @@
+# Core frameworks and utilities
+Django==4.2.5  # Main framework for the web app
+Flask==2.3.2  # Flask used for microservices or lightweight routing
+SQLAlchemy==2.0.18  # Core ORM library (used in Flask microservices)
+
+# Form rendering and Bootstrap styling
+django-crispy-forms==2.0
+crispy-bootstrap5==0.7
+
+# API interaction
+requests==2.31.0  # Synchronous API client
+aiohttp==3.8.5  # Asynchronous API client for Flask async handling
+
+# Database management and ORM
+psycopg2==2.9.7  # PostgreSQL adapter for Python
+Flask-SQLAlchemy==3.0.5  # SQLAlchemy ORM for Flask (ensure it's not used in Django)
+Django-Postgres==1.0.5  # Postgres support for Django ORM
+
+# Data handling and validation
+pandas==2.1.1  # For data processing and analysis
+marshmallow==3.21.0  # Data validation and serialization for Flask APIs
+pydantic==2.4.1  # Data validation and settings management
+
+# Logging
+loguru==0.7.1  # Advanced logging support for both Flask and Django
+
+# Security
+pyjwt==2.7.0  # JWT authentication for APIs
+cryptography==41.0.3  # Encryption support
+passlib==1.7.4  # Password hashing for both Flask and Django
+
+# Testing
+pytest==7.4.2  # Testing framework
+pytest-django==4.5.2  # Integration of pytest with Django
+pytest-cov==4.1.0  # Coverage reports
+tox==4.11.0  # Testing across environments
+
+# Linting and Formatting
+flake8==6.1.0  # Linting tool
+black==23.7.0  # Code formatting
+mypy==1.5.2  # Static type checking
+
+# Async capabilities
+asyncio==3.5.1  # Async I/O for Python
+uvicorn==0.24.0  # ASGI server for serving async apps with Flask
+
+# Cache and Queuing
+redis==5.1.0  # Redis for caching and task queues
+celery==5.3.0  # Celery for async task management (works well with Django)
+
+# Task scheduling
+APScheduler==3.10.1  # Advanced scheduling for both Flask and Django
+
+# Environment management
+python-dotenv==1.0.0  # Environment variable management
+
+# Static typing
+types-requests==2.31.0.1  # Static typing for requests library

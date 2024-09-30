@@ -8,20 +8,20 @@ ENV PYTHONUNBUFFERED=1
 # Set working directory inside the container
 WORKDIR /app
 
-# Copy requirements.txt into the container
+# Copy only requirements first to utilize caching effectively
 COPY requirements.txt /app/
 
 # Install system dependencies and required packages
 RUN apt-get update && \
     apt-get install -y libpq-dev gcc && \
     pip install --upgrade pip && \
-    pip install -r requirements.txt && \
+    pip install --no-cache-dir -r requirements.txt && \
     apt-get remove --purge -y gcc && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy the entire project to the working directory in the container
+# Copy the rest of your application
 COPY . /app/
 
 # Set environment variables for Django

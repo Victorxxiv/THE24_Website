@@ -13,7 +13,7 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
     
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)  # Ensure that args and kwargs are passed to the superclass
+        super().save(*args, **kwargs) # Ensure that args and kwargs are passed to the superclass
         
         # Resize image
         img = Image.open(self.image.path)

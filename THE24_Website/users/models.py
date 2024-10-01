@@ -12,8 +12,8 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
     
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)  # Ensure that args and kwargs are passed to the superclass
         
         # Resize image
         img = Image.open(self.image.path)

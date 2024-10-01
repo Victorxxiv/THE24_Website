@@ -1,14 +1,14 @@
 services:
   web:
     build: .
-    command: gunicorn --workers 3 --bind 0.0.0.0:8000 THE24_Website.wsgi:application
+    command: gunicorn --workers 3 --bind 0.0.0.0:8000 --reload THE24_Website.wsgi:application
     entrypoint: ["/app/entrypoint.sh"]
     volumes:
       - .:/app
     ports:
       - "8000:8000"
     env_file:
-      - .env  # Loads environment variables from the .env file
+      - .env
     depends_on:
       - db
       - redis
@@ -17,13 +17,13 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-    
+
   db:
     image: postgres:15
     environment:
-      POSTGRES_DB: ${PG_DB}  # This uses the PG_DB variable from the .env file
-      POSTGRES_USER: ${PG_USER}  # Uses the PG_USER variable
-      POSTGRES_PASSWORD: ${PG_PWD}  # Uses the PG_PWD variable
+      POSTGRES_DB: ${PG_DB}
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PWD}
     ports:
       - "5432:5432"
     volumes:
@@ -33,7 +33,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-    
+
   redis:
     image: redis:alpine
     volumes:
@@ -43,7 +43,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-  
+
 volumes:
   postgres_data:
   redis_data:

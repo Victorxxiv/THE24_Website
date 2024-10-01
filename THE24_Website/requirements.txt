@@ -42,3 +42,10 @@ python-dotenv  # Environment variable management
 
 # Static typing
 types-requests  # Static typing for requests library
+
+whitenoise
+chardet
+certifi
+idna
+pytz
+urllib3

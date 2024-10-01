@@ -2,8 +2,9 @@
 FROM python:3.10-slim
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    DJANGO_SETTINGS_MODULE=THE24_Website.settings
 
 # Set working directory inside the container
 WORKDIR /app
@@ -13,10 +14,14 @@ COPY requirements.txt /app/
 
 # Install system dependencies and required packages
 RUN apt-get update && \
-    apt-get install -y libpq-dev gcc && \
+    apt-get install -y --no-install-recommends \
+        libpq-dev \
+        gcc \
+        python3-dev \
+        build-essential && \
     pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt && \
-    apt-get remove --purge -y gcc && \
+    pip install --no-cache-dir --default-timeout=1000 -r requirements.txt && \
+    apt-get remove --purge -y gcc python3-dev build-essential && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -24,21 +29,18 @@ RUN apt-get update && \
 # Copy the rest of your application
 COPY . /app/
 
-# Set environment variables for Django
-ENV DJANGO_SETTINGS_MODULE=THE24_Website.settings
-
 # Collect static files for Django to serve them
 RUN python manage.py collectstatic --noinput
+
+# Add a non-root user for security
+RUN adduser --disabled-password --gecos '' myuser
+USER myuser
 
 # Expose the port on which Django runs
 EXPOSE 8000
 
-# Add a non-root user
-RUN adduser --disabled-password myuser
-USER myuser
-
 # Healthcheck (optional)
-HEALTHCHECK CMD curl --fail http://localhost:8000/ || exit 1
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD curl --fail http://localhost:8000/ || exit 1
 
 # Command to run the application using gunicorn
 CMD ["gunicorn", "--workers", "3", "--bind", "0.0.0.0:8000", "THE24_Website.wsgi:application"]

@@ -19,6 +19,7 @@ RUN apt-get update && \
         gcc \
         python3-dev \
         build-essential && \
+        curl && \
     pip install --upgrade pip && \
     pip install --no-cache-dir --default-timeout=1000 -r requirements.txt && \
     apt-get remove --purge -y gcc python3-dev build-essential && \

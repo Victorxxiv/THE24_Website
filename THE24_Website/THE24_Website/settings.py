@@ -175,8 +175,6 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True').lower() == 'true'
 EMAIL_HOST_USER = os.getenv('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASS')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Set the default email sender
-if not EMAIL_HOST_USER or not EMAIL_HOST_PASSWORD:
-    raise ImproperlyConfigured("Email credentials are missing")
 
 
 # Default primary key field type

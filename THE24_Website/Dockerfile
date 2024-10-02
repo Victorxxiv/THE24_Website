@@ -30,8 +30,7 @@ RUN apt-get update && \
 COPY . /app/
 
 # Collect static files for Django to serve them
-RUN python manage.py collectstatic --noinput && \
-    chown -R myuser:myuser /app/staticfiles
+RUN python manage.py collectstatic --noinput
 
 # Add a non-root user for security
 RUN adduser --disabled-password --gecos '' myuser

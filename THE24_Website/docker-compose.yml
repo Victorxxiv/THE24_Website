@@ -46,12 +46,13 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - static_volume:/path/to/staticfiles  # Ensure this points to your STATIC_ROOT
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Your Nginx configuration file
+      - ./staticfiles:/app/staticfiles  # Mount the static files director
+      - ./media:/app/media  # Mount the media files directory
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Nginx config
     ports:
       - "80:80"  # Expose Nginx on port 80
     depends_on:
-      - web  # Make sure Nginx waits for the web service to be ready
+      - web  # Wait for the web (Gunicorn/Django) service to be ready
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 30s

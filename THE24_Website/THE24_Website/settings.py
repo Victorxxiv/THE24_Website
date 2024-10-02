@@ -175,6 +175,12 @@ EMAIL_HOST_USER = os.getenv('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASS')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Set the default email sender
 
+# pytest.ini
+# [pytest]
+# DJANGO_SETTINGS_MODULE = THE24_Website.settings
+# python_files = tests.py test_*.py *_tests.py
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

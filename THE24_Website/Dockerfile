@@ -15,10 +15,12 @@ COPY requirements.txt /app/
 # Install system dependencies and required packages
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+        apt-transport-https \
+        ca-certificates \
         libpq-dev \
         gcc \
         python3-dev \
-        build-essential && \
+        build-essential \
         curl && \
     pip install --upgrade pip && \
     pip install --no-cache-dir --default-timeout=1000 -r requirements.txt && \

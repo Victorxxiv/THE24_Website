@@ -4,6 +4,9 @@
 # Logs warning
 logs/
 
+# File for deployment
+*.zip
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

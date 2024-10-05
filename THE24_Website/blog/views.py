@@ -9,10 +9,20 @@ from django.views.generic import (
     DeleteView
 )
 from .models import Post
+from django.core.paginator import Paginator
 
 def home(request):
+    post_list = Post.objects.all().order_by('-date_posted')  # Fetch posts ordered by date
+    paginator = Paginator(post_list, 5)  # Show 5 posts per page
+
+    page_number = request.GET.get('page')  # Get the page number from the query parameters
+    posts = paginator.get_page(page_number)  # Fetch the posts for the current page
+
+    latest_posts = Post.objects.all().order_by('-date_posted')[:5]  # Fetch the 5 latest posts
+
     context = {
-        'posts': Post.objects.all()
+        'posts': posts,
+        'latest_posts': latest_posts  # Add latest posts to context for sidebar
     }
     return render(request, 'blog/home.html', context)
 
@@ -71,3 +81,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
+
+def contact(request):
+    return render(request, 'blog/contact.html', {'title': 'Contact Us'})
+

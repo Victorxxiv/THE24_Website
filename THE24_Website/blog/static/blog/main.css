@@ -10,72 +10,73 @@ body {
     padding-top: 5rem; /* Margin converted to padding */
     display: flex;
     flex-direction: column;
+}
+
+/* Make main area scrollable */
+main {
+  flex: 1;  /* Makes sure the main content takes up available space */
+  padding: 1rem;
+}
+
+/* Text styling */
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+p {
+  color: #333333;
+  line-height: 1.6;
+}
+
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Stick footer to the bottom */
+footer {
+  margin-top: auto;
+  background-color: #5f788a;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Article heading improvements */
+.article-title {
+  color: #444444;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+a.article-title:hover {
+  color: #0056b3;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  body {
+    padding-top: 4rem;
   }
 
-  /* Make main area scrollable */
-  main {
-    flex: 1;  /* Makes sure the main content takes up available space */
-    padding: 1rem;
+  .content-section {
+    padding: 10px;
   }
 
-  /* Stick footer to the bottom */
-  footer {
-    margin-top: auto;
-    background-color: #5f788a;
-    color: #ffffff;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    color: #444444;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+  .navbar-nav .nav-link {
+    font-size: 0.9rem;
   }
 
-  p {
-    color: #333333;
-    line-height: 1.6;
+  .account-heading {
+    font-size: 2rem;
   }
-
-  a {
-    color: #428bca;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Article heading improvements */
-  .article-title {
-    color: #444444;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  a.article-title:hover {
-    color: #0056b3;
-  }
-
-  /* Media queries for responsiveness */
-  @media (max-width: 768px) {
-    body {
-      padding-top: 4rem;
-    }
-
-    .content-section {
-      padding: 10px;
-    }
-
-    .navbar-nav .nav-link {
-      font-size: 0.9rem;
-    }
-
-    .account-heading {
-      font-size: 2rem;
-    }
-  }
+}
 
   ul {
     margin: 0;

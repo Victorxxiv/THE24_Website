@@ -6,7 +6,25 @@ html, body {
 body {
     background: #fafafa;
     color: #333333;
-    margin-top: 5rem;
+    margin: 0;
+    padding-top: 5rem; /* Margin converted to padding */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Make main area scrollable */
+  main {
+    flex: 1;  /* Makes sure the main content takes up available space */
+    padding: 1rem;
+  }
+
+  /* Stick footer to the bottom */
+  footer {
+    margin-top: auto;
+    background-color: #5f788a;
+    color: #ffffff;
+    padding: 1rem;
+    text-align: center;
   }
   
   h1, h2, h3, h4, h5, h6 {

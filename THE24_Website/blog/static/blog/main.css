@@ -93,31 +93,56 @@ a.article-title:hover {
   font-size: 0.9rem;
 }
 
-/* Stick footer to the bottom */
+/* Image handling */
+.article-img, .account-img {
+  max-width: 100%;
+  height: auto;
+  margin-right: 16px;
+  border-radius: 50%;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* Footer styles */
 footer {
   margin-top: auto;
   background-color: #5f788a;
   color: #ffffff;
-  padding: 1rem;
+  padding: 1.5rem;
   text-align: center;
+}
+
+footer a {
+  color: #ffffff;
+  margin: 0 10px;
+  font-size: 1.2rem;
+}
+
+footer a:hover {
+  color: #f8f9fa;
 }
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
   body {
-    padding-top: 4rem;
+      padding-top: 4rem;
   }
 
   .content-section {
-    padding: 10px;
+      padding: 10px;
   }
 
   .navbar-nav .nav-link {
-    font-size: 0.9rem;
+      font-size: 0.9rem;
   }
-
+  
   .account-heading {
-    font-size: 2rem;
+      font-size: 2rem;
   }
 }
 

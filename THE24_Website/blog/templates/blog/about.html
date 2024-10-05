@@ -1,4 +1,30 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    <h1>About Page</h1>
+    <div class="container mt-4">
+        <h1>About Us</h1>
+        <p>
+            Welcome to THE24 TECH Solutions! We are dedicated to providing high-quality content related to technology, software development, and innovative solutions. Our mission is to empower individuals and organizations by sharing knowledge and resources.
+        </p>
+
+        <h2>Our Mission</h2>
+        <p>
+            Our mission is to inspire and educate our audience through informative articles, tutorials, and discussions on the latest trends in technology and software development. We aim to create a community where learners and professionals can collaborate and grow together.
+        </p>
+
+        <h2>Meet the Team</h2>
+        <p>
+            Our team consists of passionate individuals who are experts in their fields. We believe in continuous learning and sharing knowledge to foster innovation and creativity.
+        </p>
+
+        <ul>
+            <li><strong>Victor Mwendwa:</strong> Founder & Developer - Passionate about backend development and tech solutions.</li>
+            <li><strong>Jane Doe:</strong> Content Writer - Loves to write engaging articles about technology.</li>
+            <li><strong>John Smith:</strong> UX/UI Designer - Focused on creating user-friendly interfaces.</li>
+        </ul>
+
+        <h2>Get In Touch</h2>
+        <p>
+            If you have any questions, suggestions, or would like to collaborate, feel free to contact us through our <a href="{% url 'blog-contact' %}">Contact Page</a>!
+        </p>
+    </div>
 {% endblock content %}

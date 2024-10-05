@@ -58,6 +58,25 @@ body {
     color: #0056b3;
   }
 
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    body {
+      padding-top: 4rem;
+    }
+
+    .content-section {
+      padding: 10px;
+    }
+
+    .navbar-nav .nav-link {
+      font-size: 0.9rem;
+    }
+
+    .account-heading {
+      font-size: 2rem;
+    }
+  }
+
   ul {
     margin: 0;
   }

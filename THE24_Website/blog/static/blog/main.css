@@ -39,13 +39,24 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Stick footer to the bottom */
-footer {
-  margin-top: auto;
+/* Navbar */
+.navbar {
   background-color: #5f788a;
-  color: #ffffff;
-  padding: 1rem;
-  text-align: center;
+}
+
+.navbar-nav .nav-link {
+  color: #cbd5db;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover, 
+.navbar-nav .nav-link:focus {
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: 500;
+    border-bottom: 2px solid #ffffff;
 }
 
 /* Article heading improvements */
@@ -57,6 +68,15 @@ footer {
 
 a.article-title:hover {
   color: #0056b3;
+}
+
+/* Stick footer to the bottom */
+footer {
+  margin-top: auto;
+  background-color: #5f788a;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
 }
 
 /* Media queries for responsiveness */

@@ -1,7 +1,9 @@
 #!/bin/bash
+set -e  # Exit immediately if any command exits with a non-zero status
 
-# Exit immediately if a command exits with a non-zero status
-set -e
+# Check if necessary environment variables are set
+: "${DJANGO_SECRET_KEY:?Environment variable DJANGO_SECRET_KEY not set!}"
+: "${DATABASE_URL:?Environment variable DATABASE_URL not set!}"
 
 # Function to run database migrations
 run_migrations() {
@@ -18,7 +20,7 @@ collect_static() {
 # Function to start the Gunicorn server
 start_server() {
     echo "Starting the Gunicorn server..."
-    exec "$@"  # This will replace the shell with the command passed as arguments
+    exec "$@"
 }
 
 # Main script execution
@@ -27,3 +29,4 @@ cd /app  # Navigate to the application directory
 run_migrations
 collect_static
 start_server gunicorn --workers 3 --bind 0.0.0.0:8000 THE24_Website.wsgi:application
+

@@ -185,4 +185,12 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Set the default email sender
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Debugging Environment Variables (Temporary for Testing)
+print(f"DEBUG: {DEBUG}")
+print(f"SECRET_KEY: {SECRET_KEY[:5]}... (hidden for security)")
+print(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
+print(f"DATABASE_HOST: {os.getenv('PG_HOST')}")
+print(f"EMAIL_HOST: {EMAIL_HOST}")
+
+# Uncomment if using django_heroku
 # django_heroku.settings(locals())

@@ -65,9 +65,9 @@ services:
       - web
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
-      interval: 30s
+      interval: 60s
       timeout: 10s
-      retries: 3
+      retries: 5
     networks:
       - app-network
 

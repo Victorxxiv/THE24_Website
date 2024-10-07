@@ -1,1 +1,1 @@
-web: gunicorn THE24_Website.wsgi
+web: gunicorn THE24_Website.wsgi:application

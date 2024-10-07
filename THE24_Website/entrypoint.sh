@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -e  # Exit immediately if any command exits with a non-zero status
+set -e  # Exit immediately if any command exits with a non-zero status
 
 # Function to run database migrations
 run_migrations() {

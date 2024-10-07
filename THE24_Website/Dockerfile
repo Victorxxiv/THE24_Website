@@ -49,5 +49,5 @@ HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD curl --fail http://loca
 CMD ["gunicorn", "--workers", "3", "--bind", "0.0.0.0:8000", "THE24_Website.wsgi:application"]
 
 # Include Nginx configuration files
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY default.conf /etc/nginx/conf.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf

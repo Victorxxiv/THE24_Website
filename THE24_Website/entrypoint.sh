@@ -1,9 +1,5 @@
 #!/bin/bash
-set -e  # Exit immediately if any command exits with a non-zero status
-
-# Check if necessary environment variables are set
-: "${DJANGO_SECRET_KEY:?Environment variable DJANGO_SECRET_KEY not set!}"
-: "${DATABASE_URL:?Environment variable DATABASE_URL not set!}"
+# set -e  # Exit immediately if any command exits with a non-zero status
 
 # Function to run database migrations
 run_migrations() {

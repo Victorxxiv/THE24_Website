@@ -26,7 +26,7 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False').lower() in ['true', '1']
@@ -186,11 +186,11 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Set the default email sender
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Debugging Environment Variables (Temporary for Testing)
-print(f"DEBUG: {DEBUG}")
-print(f"SECRET_KEY: {SECRET_KEY[:5]}... (hidden for security)")
-print(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
-print(f"DATABASE_HOST: {os.getenv('PG_HOST')}")
-print(f"EMAIL_HOST: {EMAIL_HOST}")
+# print(f"DEBUG: {DEBUG}")
+# print(f"SECRET_KEY: {SECRET_KEY[:5]}... (hidden for security)")
+# print(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
+# print(f"DATABASE_HOST: {os.getenv('PG_HOST')}")
+# print(f"EMAIL_HOST: {EMAIL_HOST}")
 
 # Uncomment if using django_heroku
 # django_heroku.settings(locals())

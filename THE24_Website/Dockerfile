@@ -47,3 +47,7 @@ HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD curl --fail http://loca
 
 # Command to run the application using gunicorn
 CMD ["gunicorn", "--workers", "3", "--bind", "0.0.0.0:8000", "THE24_Website.wsgi:application"]
+
+# Include Nginx configuration files
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY default.conf /etc/nginx/conf.d/default.conf

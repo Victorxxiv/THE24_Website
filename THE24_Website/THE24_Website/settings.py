@@ -114,8 +114,8 @@ DATABASES = {
         'NAME': os.getenv('PG_DB'),
         'USER': os.getenv('PG_USER'),
         'PASSWORD': os.getenv('PG_PWD'),
-        'HOST': os.getenv('PG_HOST', 'localhost'),  # Default to localhost
-        'PORT': os.getenv('PG_PORT', '5432'),  # Default PostgreSQL port
+        'HOST': os.getenv('PG_HOST'),  # Default to localhost
+        'PORT': os.getenv('PG_PORT'),  # Default PostgreSQL port
         'OPTIONS': {
             'sslmode': 'require' if not DEBUG else 'prefer',  # Enforce SSL in production
         },

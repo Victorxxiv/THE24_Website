@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    command: gunicorn --workers 3 --bind 0.0.0.0:8000 --reload THE24_Website.wsgi:application
+    command: gunicorn --workers 3 --bind 0.0.0.0:8000 --reload ${GUNICORN_RELOAD:-False} THE24_Website.wsgi:application
     entrypoint: ["/app/entrypoint.sh"]
     volumes:
       - .:/app
@@ -17,6 +17,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+    networks:
+      - app-network
 
   db:
     image: postgres:15
@@ -33,6 +35,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+    networks:
+      - app-network
 
   redis:
     image: redis:alpine
@@ -43,22 +47,33 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+    networks:
+      - app-network
+
   nginx:
     image: nginx:latest
     volumes:
-      - ./staticfiles:/app/staticfiles  # Mount the static files director
-      - ./media:/app/media  # Mount the media files directory
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Nginx config
+      - ./staticfiles:/app/staticfiles
+      - ./media:/app/media
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - "80:80"  # Expose Nginx on port 80
+      - "80:80"
     depends_on:
-      - web  # Wait for the web (Gunicorn/Django) service to be ready
+      - web
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 30s
       timeout: 10s
       retries: 3
+    networks:
+      - app-network
 
 volumes:
   postgres_data:
   redis_data:
+  static_data:
+  media_data:
+
+networks:
+  app-network:
+    driver: bridge

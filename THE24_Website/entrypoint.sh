@@ -1,18 +1,29 @@
 #!/bin/bash
-# entrypoint.sh
 
-# Navigate to the directory containing manage.py
-cd /app  # According to Docker setup
+# Exit immediately if a command exits with a non-zero status
+set -e
 
-# Run database migrations
-echo "Running databse migrations..."
-if python manage.py migrate; then
-    echo "Migrations applied successfully"
-else
-    echo "Migration failed!" >&2
-    exit 1  # Exit with an error status if migration fails
-fi
+# Function to run database migrations
+run_migrations() {
+    echo "Applying database migrations..."
+    python manage.py migrate
+}
 
-# Start the Gunicorn server
-echo "Starting the Gunicorn server..."
-exec "$@"
+# Function to collect static files
+collect_static() {
+    echo "Collecting static files..."
+    python manage.py collectstatic --noinput
+}
+
+# Function to start the Gunicorn server
+start_server() {
+    echo "Starting the Gunicorn server..."
+    exec "$@"  # This will replace the shell with the command passed as arguments
+}
+
+# Main script execution
+cd /app  # Navigate to the application directory
+
+run_migrations
+collect_static
+start_server gunicorn --workers 3 --bind 0.0.0.0:8000 THE24_Website.wsgi:application

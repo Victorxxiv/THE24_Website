@@ -1,8 +1,9 @@
 {% extends "blog/base.html" %}
+{% load static %}
 {% block content %}
     <style>
         .hero-section {
-            background-image: url('/path/to/your/image.jpg'); /* Adjust as needed */
+            background-image: url('{% static "path/to/your/ai-generated-wallpaper.jpg" %}'); /* Adjust to your generated wallpaper */
             background-size: cover;
             background-position: center;
             height: 300px; /* Adjust height as needed */
@@ -84,4 +85,5 @@
         {% endfor %}
     </div>
 {% endblock content %}
+
 

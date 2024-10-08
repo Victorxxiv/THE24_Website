@@ -1,16 +1,51 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    <h1>Welcome to THE24 TECH Solutions</h1>
-    <p>This is the home page for THE24 TECH website.</p>
+    <style>
+        .hero-section {
+            background-image: url('/path/to/your/image.jpg'); /* Adjust as needed */
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <h1>Welcome to THE24 TECH Solutions</h1>
+        <p>Your gateway to innovative technology solutions.</p>
+    </div>
 
     <h2>Latest Blog Posts</h2>
-    <ul>
+    <div class="row">
         {% for post in latest_posts %}
-            <li>
-                <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a> by {{ post.author}} on {{ post.date_posted|date:"F d, Y" }}
-            </li>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a>
+                        </h5>
+                        <p class="card-text">{{ post.content|truncatewords:20 }}</p>
+                        <p class="card-text"><small class="text-muted">by {{ post.author }} on {{ post.date_posted|date:"F d, Y" }}</small></p>
+                    </div>
+                </div>
+            </div>
         {% empty %}
-            <li>No posts are available.</li>
+            <p>No posts are available.</p>
         {% endfor %}
-    </ul>
-{% endblock content %} 
+    </div>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <h1>Welcome to THE24 TECH Solutions</h1>
+    <p>This is the home page for the website, separated from the blog.</p>
+
+    <h2>Latest Blog Posts</h2>
+    <ul>
+        {% for post in latest_posts %}
+            <li>
+                <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a> by {{ post.author}} on {{ post.date_posted|date:"F d, Y" }}
+            </li>
+        {% empty %}
+            <li>No posts are available.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %} 

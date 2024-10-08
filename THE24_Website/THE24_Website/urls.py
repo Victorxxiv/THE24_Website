@@ -29,32 +29,23 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('password-reset/',
-         auth_views.PasswordResetView.as_view(
-             template_name='users/password_reset.html'
-         ),
+         auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'),
          name='password_reset'),
     path('password-reset/done/',
-         auth_views.PasswordResetDoneView.as_view(
-             template_name='users/password_reset_done.html'
-         ),
+         auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'),
          name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>/',
-         auth_views.PasswordResetConfirmView.as_view(
-             template_name='users/password_reset_confirm.html'
-         ),
+         auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'),
          name='password_reset_confirm'),
     path('password-reset-complete/',
-         auth_views.PasswordResetCompleteView.as_view(
-             template_name='users/password_reset_complete.html'
-         ),
+         auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
          name='password_reset_complete'),
-    path('', include('blog.urls')),
 
-    # Home Page (separate from blog)
-    path('', include('home.urls')),  # Main page for THE24 TECH Solutions
+    # Home Page (should handle root URL '/')
+    path('', include('home.urls')),  # Home app maps to the root URL
 
-    # Blog Page
-    path('blog/', include('blog.urls')), # Blog will be accessible via '/blog/'
+    # Blog Page (mapped to '/blog/' to avoid conflict with home app)
+    path('blog/', include('blog.urls')),  # Blog app mapped to '/blog/'
 ]
 
 

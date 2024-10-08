@@ -61,6 +61,7 @@ LOGGING = {
 
 INSTALLED_APPS = [
     "blog.apps.BlogConfig",
+    "home.apps.HomeConfig",
     "users.apps.UsersConfig",
     "crispy_forms",
     "crispy_bootstrap5", 

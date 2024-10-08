@@ -11,7 +11,7 @@ from . import views
 from .views import contact
 
 urlpatterns = [
-    path('', PostListView.as_view(), name='blog-home'),
+    path('', PostListView.as_view(), name='blog'),  # Blog home will be '/blog/'
     path('user/<str:username>/', UserPostListView.as_view(), name='user-posts'),
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
     path('post/new/', PostCreateView.as_view(), name='post-create'),

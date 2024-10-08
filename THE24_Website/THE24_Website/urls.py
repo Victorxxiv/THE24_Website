@@ -51,7 +51,7 @@ urlpatterns = [
     path('', include('blog.urls')),
 
     # Home Page (separate from blog)
-    path('', include('home.urls')),  # This will point to the home app
+    path('', include('home.urls')),  # Main page for THE24 TECH Solutions
 
     # Blog Page
     path('blog/', include('blog.urls')), # Blog will be accessible via '/blog/'

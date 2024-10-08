@@ -3,7 +3,7 @@
 {% block content %}
     <style>
         .hero-section {
-            background-image: url('{% static "path/to/your/ai-generated-wallpaper.jpg" %}'); /* Adjust to your generated wallpaper */
+            background-image: url('{% static "media/pics/laptop3.jpg" %}'); /* Adjust to your generated wallpaper */
             background-size: cover;
             background-position: center;
             height: 300px; /* Adjust height as needed */
@@ -55,11 +55,18 @@
         .post-card .card-body {
             padding: 15px;
         }
+        .card-title a {
+            color: blue; /* Set link color to blue */
+            text-decoration: none; /* Remove underline from links */
+        }
+        .card-title a:hover {
+            text-decoration: underline; /* Underline on hover for better visibility */
+        }
     </style>
 
     <div class="hero-section">
         <div class="hero-overlay"></div>
-        <h1>Welcome to THE24 TECH Solutions</h1>
+        <h1>Welcome To THE24 TECH Solutions</h1>
         <p>Your gateway to innovative technology solutions.</p>
     </div>
 
@@ -85,5 +92,3 @@
         {% endfor %}
     </div>
 {% endblock content %}
-
-

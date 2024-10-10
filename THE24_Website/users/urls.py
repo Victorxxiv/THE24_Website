@@ -11,6 +11,10 @@ urlpatterns = [
     # User profile
     path('profile/', profile, name='profile'),
 
+    # Additional user-related views
+    # path('profile/edit/', profile_edit, name='profile_edit'),  # Edit user profile
+    # path('delete/', account_delete, name='account_delete'),    # Delete user account
+
     # Authentication views
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
@@ -21,3 +25,4 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'), name='password_reset_complete'),
 ]
+

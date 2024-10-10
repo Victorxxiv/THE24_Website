@@ -65,7 +65,7 @@ services:
     depends_on:
       - web
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
+      test: ["CMD", "curl", "-f", "http://localhost/static/"]
       interval: 60s
       timeout: 10s
       retries: 5

@@ -24,6 +24,9 @@ from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/', include('users.urls')),  # Users app
+    path('blog/', include('blog.urls')),    # Blog app
+    path('', include('home.urls')),          # Home app
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
@@ -41,11 +44,6 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
          name='password_reset_complete'),
 
-    # Home Page (should handle root URL '/')
-    path('', include('home.urls')),  # Home app maps to the root URL
-
-    # Blog Page (mapped to '/blog/' to avoid conflict with home app)
-    path('blog/', include('blog.urls')),  # Blog app mapped to '/blog/'
 ]
 
 

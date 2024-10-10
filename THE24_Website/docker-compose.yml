@@ -5,7 +5,7 @@ services:
     entrypoint: ["/app/entrypoint.sh"]
     user: "1000:1000"  # This is myuser's UID and GID
     volumes:
-      - ./app:/app
+      - .:/app
       - ./media:/app/media  # Mounting static files volume
       - ./staticfiles:/app/staticfiles        # Mounting media files volume
     ports:

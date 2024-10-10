@@ -5,8 +5,8 @@ services:
     entrypoint: ["/app/entrypoint.sh"]
     volumes:
       - .:/app
-      - static_data:/app/staticfiles  # Mounting static files volume
-      - media_data:/app/media         # Mounting media files volume
+      - ./media:/app/media  # Mounting static files volume
+      - ./staticfiles:/app/staticfiles        # Mounting media files volume
     ports:
       - "8000:8000"
     env_file:

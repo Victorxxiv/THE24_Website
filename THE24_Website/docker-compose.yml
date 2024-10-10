@@ -55,8 +55,8 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - static_data:/app/staticfiles   # Using shared static volume
-      - media_data:/app/media          # Using shared media volume
+      - ./staticfiles:/app/staticfiles   # Using shared static volume
+      - ./media:/app/media          # Using shared media volume
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf   # Correct path to nginx.conf
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf   # Correct path to default.conf
     ports:

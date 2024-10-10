@@ -3,8 +3,9 @@ services:
     build: .
     command: gunicorn --workers 3 --bind 0.0.0.0:8000 THE24_Website.wsgi:application
     entrypoint: ["/app/entrypoint.sh"]
+    user: "1000:1000"  # This is myuser's UID and GID
     volumes:
-      - .:/app
+      - ./app:/app
       - ./media:/app/media  # Mounting static files volume
       - ./staticfiles:/app/staticfiles        # Mounting media files volume
     ports:

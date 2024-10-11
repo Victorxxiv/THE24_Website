@@ -32,6 +32,9 @@ RUN apt-get update && \
 # Copy the rest of your application
 COPY . /app/
 
+# Create the logs directory
+RUN mkdir -p /app/logs
+
 # Collect static files for Django to serve them
 RUN python manage.py collectstatic --noinput
 

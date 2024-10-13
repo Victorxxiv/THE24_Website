@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     DJANGO_SETTINGS_MODULE=THE24_Website.settings
 
-# Set working directory inside the container
+# Set working directory inside container
 WORKDIR /app
 
 # Copy only requirements first to utilize caching effectively

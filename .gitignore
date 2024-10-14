@@ -1,5 +1,5 @@
 # Config
-.ebextensions/
+ebextensions/
 
 # Logs warning
 logs/

@@ -8,7 +8,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 
 # Set the working directory inside the container and create necessary directories
-RUN mkdir -p /app /app/staticfiles /app/logs
+RUN mkdir -p /app /app/staticfiles /app/media /app/logs
 WORKDIR /app
 
 # Upgrade pip to the latest version
@@ -27,6 +27,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Copy the rest of your application
 COPY . /app/
 
+# Add a non-root user for security
+RUN adduser --disabled-password --gecos '' myuser
 
 # Set correct permissions for non-root user
 RUN chown -R myuser:myuser /app
@@ -34,8 +36,7 @@ RUN chown -R myuser:myuser /app
 # Collect static files for Django to serve them
 RUN python manage.py collectstatic --noinput
 
-# Add a non-root user for security
-RUN adduser --disabled-password --gecos '' myuser
+# Switch to the non-root user
 USER myuser
 
 # Expose the port on which Django runs

@@ -3,12 +3,11 @@ services:
     build: .
     command: gunicorn --workers 3 --bind 0.0.0.0:8000 THE24_Website.wsgi:application
     entrypoint: ["/app/entrypoint.sh"]
-    user: "1000:1000"  # This is myuser's UID and GID
     volumes:
       - .:/app
       - ./logs:/app/logs  # Ensure the logs directory is mounted
-      - ./media:/app/media  # Media files volume
-      - ./staticfiles:/app/staticfiles        # Static files volume
+      - ./static:/app/staticfiles
+      - ./media:/app/media
     ports:
       - "8000:8000"
     env_file:
@@ -59,8 +58,8 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf   # Correct path to nginx.conf
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf   # Correct path to default.conf
-      - ./staticfiles:/app/staticfiles   # Using shared static volume
-      - ./media:/app/media          # Using shared media volume
+      - ./static:/app/staticfiles
+      - ./media:/app/media
     ports:
       - "80:80"
       - "443:443"
@@ -78,8 +77,7 @@ services:
 volumes:
   postgres_data:
   redis_data:
-  staticfiles:
-  media:
+
 
 networks:
   app-network:

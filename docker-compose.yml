@@ -7,8 +7,8 @@ services:
     volumes:
       - .:/app
       - ./logs:/app/logs  # Ensure the logs directory is mounted
-      - ./media:/media  # Media files volume
-      - ./staticfiles:/staticfiles        # Static files volume
+      - ./media:/app/media  # Media files volume
+      - ./staticfiles:/app/staticfiles        # Static files volume
     ports:
       - "8000:8000"
     env_file:
@@ -59,11 +59,12 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf   # Correct path to nginx.conf
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf   # Correct path to default.conf
-      - ./staticfiles:/staticfiles   # Using shared static volume
-      - ./media:/media          # Using shared media volume
+      - ./staticfiles:/app/staticfiles   # Using shared static volume
+      - ./media:/app/media          # Using shared media volume
     ports:
       - "80:80"
       - "443:443"
+    restart: always
     depends_on:
       - web
     networks:

@@ -6,34 +6,30 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     DJANGO_SETTINGS_MODULE=THE24_Website.settings
 
-# Set working directory inside container
+
+# Set the working directory inside the container and create necessary directories
+RUN mkdir -p /app /app/staticfiles /app/logs
 WORKDIR /app
+
+# Upgrade pip to the latest version
+RUN pip install --upgrade pip
 
 # Copy only requirements first to utilize caching effectively
 COPY requirements.txt /app/
 
 # Install system dependencies and required packages
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        apt-transport-https \
-        ca-certificates \
-        libpq-dev \
-        gcc \
-        python3-dev \
-        build-essential \
-        curl && \
-    pip install --upgrade pip && \
-    pip install --no-cache-dir --default-timeout=1000 -r requirements.txt && \
-    apt-get remove --purge -y gcc python3-dev build-essential && \
-    apt-get autoremove -y && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    apt-transport-https ca-certificates libpq-dev gcc python3-dev build-essential curl \
+    && pip install --no-cache-dir --default-timeout=1000 -r requirements.txt \
+    && apt-get purge -y --auto-remove gcc python3-dev build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy the rest of your application
 COPY . /app/
 
-# Create the logs directory
-RUN mkdir -p /app/logs
+
+# Set correct permissions for non-root user
+RUN chown -R myuser:myuser /app
 
 # Collect static files for Django to serve them
 RUN python manage.py collectstatic --noinput

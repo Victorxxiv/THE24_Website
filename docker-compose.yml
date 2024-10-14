@@ -57,10 +57,10 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./staticfiles:/app/staticfiles   # Using shared static volume
-      - ./media:/app/media          # Using shared media volume
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf   # Correct path to nginx.conf
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf   # Correct path to default.conf
+      - ./staticfiles:/app/staticfiles   # Using shared static volume
+      - ./media:/app/media          # Using shared media volume
     ports:
       - "80:80"
     depends_on:

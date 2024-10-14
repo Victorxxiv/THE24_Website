@@ -16,7 +16,7 @@ collect_static() {
 # Function to start the Gunicorn server
 start_server() {
     echo "Starting the Gunicorn server..."
-    exec "$@"
+    exec "$@"  # This will run the CMD defined in Dockerfile or docker-compose
 }
 
 # Main script execution

@@ -30,8 +30,9 @@ COPY . /app/
 # Add a non-root user for security
 RUN adduser --disabled-password --gecos '' myuser
 
-# Set correct permissions for non-root user
-RUN chown -R myuser:myuser /app
+# Set correct permissions for non-root user on necessary directories
+RUN chown -R myuser:myuser /app \
+    && chmod -R 755 /app/staticfiles /app/media /app/logs
 
 # Collect static files for Django to serve them
 RUN python manage.py collectstatic --noinput

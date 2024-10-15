@@ -64,13 +64,14 @@ services:
     ports:
       - "80:80"
       # - "443:443"
-    restart: always
+    # restart: always
     depends_on:
       - web
     networks:
       - app-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/static/"]
+      # test: ["CMD", "curl", "-f", "http://localhost/static/"]
+      test: ["CMD", "curl", "-f", "http://localhost/"]
       interval: 60s
       timeout: 10s
       retries: 5

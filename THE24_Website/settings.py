@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False').lower() in ['true', '1']
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost', 'localhost:8000').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,localhost:8000').split(',')
 
 # Enabling logging to capture errors in production
 LOGGING = {

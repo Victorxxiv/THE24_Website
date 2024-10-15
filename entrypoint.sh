@@ -25,4 +25,3 @@ cd /app  # Navigate to the application directory
 run_migrations
 collect_static
 start_server gunicorn --workers 2 --bind 0.0.0.0:8000 THE24_Website.wsgi:application
-

@@ -37,20 +37,37 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
     'handlers': {
         'file': {
             'level': 'WARNING',  # Captures warnings, errors, and critical logs
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'logs/django_warnings.log'),
+            'formatter': 'verbose',
         },
         'console': {
             'class': 'logging.StreamHandler',
+            'formatter': 'simple',  # Simpler format for console
         },
     },
     'loggers': {
         'django': {
             'handlers': ['file', 'console'],
             'level': 'WARNING',  # Log level set to WARNING
+            'propagate': True,
+        },
+        'django.security.DisallowedHost': {  # Specific error handling
+            'handlers': ['file', 'console'],
+            'level': 'ERROR',
             'propagate': True,
         },
     },

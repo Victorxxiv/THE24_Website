@@ -51,7 +51,3 @@ HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD curl --fail http://loca
 
 # Use entrypoint.sh to run the application with dynamic worker calculation
 ENTRYPOINT ["/app/entrypoint.sh"]
-
-# Include Nginx configuration files
-COPY nginx/nginx.conf /etc/nginx/nginx.conf
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf

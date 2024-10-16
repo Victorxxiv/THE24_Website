@@ -25,7 +25,7 @@ calculate_workers() {
 # Function to start the Gunicorn server
 start_server() {
     echo "Starting the Gunicorn server with $WORKERS workers..."
-    exec "$@"  # This will run the CMD defined in Dockerfile or docker-compose
+    exec gunicorn --workers $WORKERS --bind 0.0.0.0:8000 THE24_Website.wsgi:application
 }
 
 # Main script execution
@@ -33,4 +33,5 @@ cd /app  # Navigate to the application directory
 
 run_migrations
 collect_static
+calculate_workers
 start_server

@@ -9,12 +9,14 @@
           <p class="text-secondary">{{ user.email }}</p>
         </div>
       </div>
-      <form method="POST" enctype="multipart/form-data">
+      <form method="POST" enctype="multipart/form-data" autocomplete="on">  <!-- Enable autocomplete for the form -->
           {% csrf_token %}
           <fieldset class="form-group">
               <legend class="border-bottom mb-4">Profile Info</legend>
               {{ u_form|crispy }}
-              {{ p_form|crispy }}
+              {{ p_form.image|as_crispy_field }}  <!-- Existing image field -->
+              {{ p_form.bio|as_crispy_field }}    <!-- Add bio field here -->
+              {{ p_form.city|as_crispy_field }}   <!-- Add city field here -->
           </fieldset>
           <div class="form-group">
               <button class="btn btn-outline-info" type="submit">Update</button>

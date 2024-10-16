@@ -13,9 +13,18 @@ collect_static() {
     python manage.py collectstatic --noinput
 }
 
+# Function to calculate the number of Gunicorn workers based on available CPU cores
+calculate_workers() {
+    # Get the number of CPU cores available in the container
+    CORES=$(getconf _NPROCESSORS_ONLN)
+    # Use the recommended formula for Gunicorn workers: (2 x cores) + 1
+    WORKERS=$((2 * CORES + 1))
+    echo "Calculated $WORKERS Gunicorn workers based on $CORES CPU cores."
+}
+
 # Function to start the Gunicorn server
 start_server() {
-    echo "Starting the Gunicorn server..."
+    echo "Starting the Gunicorn server with $WORKERS workers..."
     exec "$@"  # This will run the CMD defined in Dockerfile or docker-compose
 }
 
@@ -24,4 +33,4 @@ cd /app  # Navigate to the application directory
 
 run_migrations
 collect_static
-start_server gunicorn --workers 2 --bind 0.0.0.0:8000 THE24_Website.wsgi:application
+start_server

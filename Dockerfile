@@ -47,7 +47,10 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD curl --fail http://localhost:8000/ || exit 1
 
 # Command to run the application using gunicorn
-CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:8000", "THE24_Website.wsgi:application"]
+# CMD ["gunicorn", "--workers", "3", "--bind", "0.0.0.0:8000", "THE24_Website.wsgi:application"]
+
+# Use entrypoint.sh to run the application with dynamic worker calculation
+ENTRYPOINT ["/app/entrypoint.sh"]
 
 # Include Nginx configuration files
 COPY nginx/nginx.conf /etc/nginx/nginx.conf

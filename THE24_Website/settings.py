@@ -183,11 +183,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Enable ManifestStaticFilesStorage for static file versioning
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-# MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # MEDIA_ROOT should be the path where media files are stored.
-MEDIA_ROOT = os.path.join(BASE_DIR, 'app/media')  # Change the media path to app/media
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'app/media')  # Change the media path to app/media
 
 # MEDIA_URL defines the base URL to access media files.
 MEDIA_URL = '/media/'
